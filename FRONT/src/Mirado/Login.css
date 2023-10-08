@@ -1,0 +1,78 @@
+  .formula {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #084d54b3;
+    border-radius: 5px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8.2px);
+    -webkit-backdrop-filter: blur(8.2px);
+    width: 25em;
+    height: 15em;
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  
+  .formula p {
+    color: #fff;
+    font-weight: bolder;
+  }
+  
+  .inp {
+    margin-left: auto;
+    margin-right: auto;
+    white-space: 4px;
+  }
+  
+  .inputa + .inputa {
+    margin-left: 0.5em
+  }
+  
+  .inputa {
+    color: #fff;
+    height: 2em;
+    width: 2em;
+    float: left;
+    text-align: center;
+    background: #00000000;
+    outline: none;
+    border: 1px #fff solid;
+    border-radius: 5px;
+    transition: all 0.6s ease;
+    font-size: larger;
+  }
+  
+  .inputa:focus {
+    outline: none;
+    border: 1px #fff solid;
+  }
+  
+  .inputa:not(:placeholder-shown) {
+    background-color: #fff;
+    width: 1em;
+    height: 1em
+  }
+  
+  .formula button {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #00000000;
+    color: #fff;
+    width: 8.5em;
+    height: 2.3em;
+    border: #fff 0.1em solid;
+    border-radius: 5px;
+    transition: all 0.5s ease;
+  }
+  
+  .formula button:hover {
+    background-color: #fff;
+    color: #000
+  }
+  

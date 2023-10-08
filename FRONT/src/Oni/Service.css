@@ -1,0 +1,93 @@
+/* Service.css */
+
+/* Style for the container of the inputs and MenuVertical */
+/* .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+} */
+
+/* Style for the text input */
+/* input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease-in-out;
+} */
+
+/* Add a subtle animation to the text input */
+/* input[type="text"]:hover,
+input[type="text"]:focus {
+    border-color: #e74c3c;
+} */
+
+/* Style for the number input */
+/* input[type="number"] {
+    width: 100px;
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid #27ae60;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease-in-out;
+}
+
+/* Add a subtle animation to the number input */
+/* input[type="number"]:hover,
+input[type="number"]:focus {
+    border-color: #e67e22;
+} */
+
+/* Style for the checkbox and radio inputs */
+/* input[type="checkbox"],
+input[type="radio"] {
+    margin: 10px;
+} */ */
+
+/* Style for the labels of radio inputs */
+label {
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+/* Style for the select input */
+select {
+    width: 150px;
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid #9b59b6;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #ecf0f1;
+    transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+button{
+  background-color: #40b971;
+}
+/* Add a subtle animation to the select input */
+select:hover,
+select:focus {
+    border-color: #e74c3c;
+    background-color: #fff;
+}
+
+/* Animation for MenuVertical */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Apply the animation to MenuVertical */
+.MenuVertical {
+    animation: fadeIn 1s;
+}

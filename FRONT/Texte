@@ -1,0 +1,276 @@
+import React, { useState } from 'react';
+
+function CreateAnnouncement() {
+  // Define state variables for input values
+  const [diplome, setDiplome] = useState('');
+  const [experience, setExperience] = useState('');
+  const [typeService, setTypeService] = useState('');
+  const [adresse, setAdresse] = useState('');
+  const [lieu, setLieu] = useState('');
+  const [situationMatrimoniale, setSituationMatrimoniale] = useState('');
+  const [genre, setGenre] = useState('');
+  const [nationalite, setNationalite] = useState('');
+  const [langue, setLangue] = useState('');
+  const [niveau, setNiveau] = useState('');
+  const [description, setDescription] = useState('');
+
+  // Create a function to generate the announcement
+  const generateAnnouncement = () => {
+    // Construct the announcement text based on input values
+    const announcementText = `
+      Critère d'embauche
+      Diplôme Minimum: ${diplome}
+      Expérience Requise: ${experience}
+
+      Type Service: ${typeService}
+      Adresse: ${adresse}
+      Lieu: ${lieu}
+      Situation Matrimoniale: ${situationMatrimoniale}
+      Genre: ${genre}
+      Nationalité: ${nationalite}
+      Langue: ${langue}
+      Niveau: ${niveau}
+      Description: ${description}
+    `;
+
+    // Display the generated announcement text
+    alert(announcementText);
+  };
+
+  return (
+    <div>
+      {/* Input fields */}
+      <div>
+        <label>Diplôme Minimum</label>
+        <input type="text" value={diplome} onChange={(e) => setDiplome(e.target.value)} />
+      </div>
+      <div>
+        <label>Expérience Requise</label>
+        <input type="text" value={experience} onChange={(e) => setExperience(e.target.value)} />
+      </div>
+      {/* Add more input fields here for other criteria */}
+      
+      {/* "Publier l'annonce" button */}
+      <button onClick={generateAnnouncement}>Publier l'annonce</button>
+
+      {/* Display the generated announcement */}
+      <div>
+        <h2>Annonce Générée:</h2>
+        <pre>{generateAnnouncement()}</pre>
+      </div>
+    </div>
+  );
+}
+
+export default CreateAnnouncement;
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import './Critere.css';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+function Critere() {
+  const [announcementText, setAnnouncementText] = useState('');
+  const [formValues, setFormValues] = useState({
+    diplome: 'Diplome',
+    diplomeCoefficient: '',
+    experience: '',
+    experienceType: 'Type Service',
+    experienceCoefficient: '',
+    adresse: '',
+    lieu: 'Lieu',
+    adresseCoefficient: '',
+    situationMatrimoniale: 'Celibataire',
+    situationMatrimonialeCoefficient: '',
+    genre: 'Homme',
+    genreCoefficient: '',
+    nationalite: 'Nationalite',
+    nationaliteCoefficient: '',
+    langue: 'Choisissez une langue',
+    niveau: 'Niveau',
+    langueCoefficient: '',
+    description: '',
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+  };
+
+  const handleAnnouncementGeneration = () => {
+    // Construct the announcement text based on input values
+    const {
+      diplome,
+      experience,
+      adresse,
+      situationMatrimoniale,
+      genre,
+      nationalite,
+      langue,
+      niveau,
+      description,
+    } = formValues;
+
+    const announcement = `${diplome}: ${experience}, ${adresse}, ${situationMatrimoniale}, ${genre}, ${nationalite}, ${langue}, ${niveau}, ${description}`;
+
+    setAnnouncementText(announcement);
+  };
+
+  return (
+    <div className="container">
+      <div className="testbox">
+        <form action="/" className="form">
+          {/* ... Your form inputs here */}
+          <p className="small">Description</p>
+          <textarea
+            name="description"
+            value={formValues.description}
+            onChange={handleInputChange}
+            rows="5"
+          ></textarea>
+          <div className="btn-block">
+            <button
+              type="button"
+              onClick={handleAnnouncementGeneration}
+            >
+              Publier l'annonce
+            </button>
+          </div>
+        </form>
+      </div>
+
+      {announcementText && (
+        <AnnouncementView announcementText={announcementText} />
+      )}
+    </div>
+  );
+}
+
+
+
+function AnnouncementView({ announcementText }) {
+  return (
+    <div>
+      <h2>Annonce créée</h2>
+      <p>{announcementText}</p>
+      <Link to="/validation">
+        <button>Valider</button>
+      </Link>
+    </div>
+  );
+}
+
+
+
+function CreationCritere() {
+    const [formValues, setFormValues] = useState({
+      diplome: 'Diplome',
+      diplomeCoefficient: '',
+      experience: '',
+      experienceTypeService: 'Type Service',
+      experienceCoefficient: '',
+      adresse: '',
+      adresseLieu: 'Lieu',
+      adresseCoefficient: '',
+      situationMatrimoniale: 'Celibataire',
+      situationMatrimonialeCoefficient: '',
+      genre: 'Homme',
+      genreCoefficient: '',
+      nationalite: 'Nationalite',
+      nationaliteCoefficient: '',
+      langue: 'Choisissez une langue',
+      niveau: 'Niveau',
+      langueCoefficient: '',
+      description: '',
+    });
+  
+    const handleInputChange = (e) => {
+      const { name, value } = e.target;
+      setFormValues({
+        ...formValues,
+        [name]: value,
+      });
+    };
+  
+    const handleAnnouncementGeneration = () => {
+      // Create an announcement text based on formValues
+      const announcementText = `
+        Diplome Minimum: ${formValues.diplome}, Coefficient: ${formValues.diplomeCoefficient}
+        Experience Requis: ${formValues.experience}, Type Service: ${formValues.experienceTypeService}, Coefficient: ${formValues.experienceCoefficient}
+        Adresse: ${formValues.adresse}, Lieu: ${formValues.adresseLieu}, Coefficient: ${formValues.adresseCoefficient}
+        Situation Matrimoniale: ${formValues.situationMatrimoniale}, Coefficient: ${formValues.situationMatrimonialeCoefficient}
+        Genre: ${formValues.genre}, Coefficient: ${formValues.genreCoefficient}
+        Nationalite: ${formValues.nationalite}, Coefficient: ${formValues.nationaliteCoefficient}
+        Langue: ${formValues.langue}, Niveau: ${formValues.niveau}, Coefficient: ${formValues.langueCoefficient}
+        Description: ${formValues.description}
+      `;
+      console.log(announcementText);
+      // You can do something with the announcement text, such as sending it to a server or displaying it.
+    };
+  
+    return (
+      <>
+        <div className="testbox">
+          <form action="/" className="form">
+            <h1>Critere d'embauche</h1>
+  
+            <h4>Diplome Minimum</h4>
+            <div className="title-block">
+              <select
+                name="diplome"
+                value={formValues.diplome}
+                onChange={handleInputChange}
+              >
+                <option value="Diplome">Diplome</option>
+                <option value="ms">DOCTORAT</option>
+                <option value="miss">MASTER</option>
+                <option value="mrs">LICENCE</option>
+                <option value="mr">Mr</option>
+              </select>
+              <input
+                className="name"
+                type="number"
+                name="diplomeCoefficient"
+                placeholder="Coefficient"
+                value={formValues.diplomeCoefficient}
+                onChange={handleInputChange}
+              />
+            </div>
+  
+  
+            <p className="small">Description</p>
+            <textarea
+              name="description"
+              value={formValues.description}
+              onChange={handleInputChange}
+              rows="5"
+            ></textarea>
+            <div className="btn-block">
+              <button
+                type="button"
+                onClick={handleAnnouncementGeneration}
+              >
+                Publier l'annonce
+              </button>
+            </div>
+          </form>
+        </div>
+      </>
+    );
+  }
+  
